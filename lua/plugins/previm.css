@@ -1,0 +1,27 @@
+body {
+  background-color: #1e1e2e;
+  /* Dark bluish-grey background */
+  color: #f0f0f0;
+  /* Pastel white text */
+  font-family: Arial, sans-serif;
+  /* Specify a fallback font family */
+  line-height: 1.6;
+  /* Adjust line height for better readability */
+  padding: 20px;
+  /* Add some padding to the body */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #f0f0f0;
+  /* Pastel white headers */
+}
+
+a {
+  color: #6cb2eb;
+  /* Light blue links */
+}
