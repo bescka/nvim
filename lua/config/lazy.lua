@@ -29,10 +29,10 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
+  -- install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
-}, 
+},
 {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

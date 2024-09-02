@@ -114,7 +114,6 @@ return { -- Autocompletion
           -- {name = 'from_directory', path = "~/.config/nvim/LuaSnip"}
         },
       }
-
         -- Autocommand to match HTML math classes
       vim.cmd([[
         augroup html_math_snippets
