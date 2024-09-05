@@ -28,7 +28,7 @@ vim.g.mkdp_browser = 'edge'
 -- re-sourcing commands for snips
 vim.keymap.set("n", "<leader><leader>h", "<cmd>source ~/.config/nvim/LuaSnip/html.lua<CR>")
 vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/LuaSnip/all.lua<CR>")
-
+vim.keymap.set("n", "<leader><leader>w", "<cmd>source ~/.config/nvim/LuaSnip/vimwiki.lua<CR>")
 
 -- Define a custom highlight group for the ruler line
 vim.cmd([[
