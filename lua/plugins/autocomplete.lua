@@ -39,6 +39,7 @@ return { -- Autocompletion
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
+      require('luasnip').filetype_extend("javascriptreact", { "html" })
       -- Function to check if the cursor is inside a math class
       local function is_in_math_class()
         local pos = vim.api.nvim_win_get_cursor(0)

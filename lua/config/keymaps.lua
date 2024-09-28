@@ -76,4 +76,10 @@ vim.keymap.set('n', '<leader>wk', '<C-w><C-k>', { desc = 'Move focus to the uppe
 -- Map <Leader>e to equalize all window splits
 vim.api.nvim_set_keymap('n', '<Leader>we', ':wincmd =<CR>', {noremap = true, silent = true })
 
-
+-- Marks
+vim.keymap.set('n', 'md', function()
+  -- Prompt the user for the mark they want to delete
+  local mark = vim.fn.input("Delete mark: ")
+  -- Execute the delete mark command for the given mark
+  vim.cmd('delm ' .. mark)
+end, { noremap = true, silent = true })

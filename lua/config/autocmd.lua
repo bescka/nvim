@@ -12,17 +12,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- Create a new augroup for Markdown file type
-vim.api.nvim_create_augroup('MarkdownUnmap', { clear = true })
+-- -- Create a new augroup for Markdown file type
+-- vim.api.nvim_create_augroup('MarkdownUnmap', { clear = true })
 
--- Vimwiki issue with keymappings interferring with window movement
-vim.api.nvim_exec([[
-  augroup VimwikiOverrideMappings
-    autocmd!
-    autocmd FileType vimwiki nnoremap <buffer> <space>wh <cmd>wincmd h<CR>
-    autocmd FileType vimwiki nnoremap <buffer> <space>whh <cmd>wincmd h<CR>
-    autocmd FileType markdown nnoremap <buffer> <space>wh <cmd>wincmd h<CR>
-    autocmd FileType markdown nnoremap <buffer> <space>whh <cmd>wincmd h<CR>
-  augroup END
-]], false)
+-- -- Vimwiki issue with keymappings interferring with window movement
+-- vim.api.nvim_exec([[
+--   augroup VimwikiOverrideMappings
+--     autocmd!
+--     autocmd FileType vimwiki nnoremap <buffer> <space>wh <cmd>wincmd h<CR>
+--     autocmd FileType vimwiki nnoremap <buffer> <space>whh <cmd>wincmd h<CR>
+--     autocmd FileType markdown nnoremap <buffer> <space>wh <cmd>wincmd h<CR>
+--     autocmd FileType markdown nnoremap <buffer> <space>whh <cmd>wincmd h<CR>
+--   augroup END
+-- ]], false)
+--
+vim.api.nvim_create_autocmd("User", {
+  pattern = "ToggleMyPrompt",
+  callback = function() require("avante.config").override({system_prompt = "MY CUSTOM SYSTEM PROMPT"}) end,
+})
 
+vim.keymap.set("n", "<leader>am", function() vim.api.nvim_exec_autocmds("User", { pattern = "ToggleMyPrompt" }) end, { desc = "avante: toggle my prompt" })

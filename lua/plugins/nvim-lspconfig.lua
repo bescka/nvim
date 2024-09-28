@@ -161,7 +161,8 @@ config = function()
     vls = {},
     html = {},
     cssls = {},
-    tsserver = {},
+    ts_ls = {},
+    -- tsserver = {},
     -- sqls = {},
     jsonls = {},
     yamlls = {},
@@ -219,7 +220,10 @@ config = function()
       function(server_name)
         local server = servers[server_name] or {}
         -- This handles overriding only values explicitly passed
-        -- by the server configuration above. Useful when disabling
+        -- by the server configuration above. Useful when disabling-- https://github.com/neovim/nvim-lspconfig/pull/3232
+        -- if server_name == "tsserver" then
+        --   server_name = "ts_ls"
+        -- end
         -- certain features of an LSP (for example, turning off formatting for tsserver)
         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
         require('lspconfig')[server_name].setup(server)

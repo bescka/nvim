@@ -5,7 +5,9 @@
 
 -- Enable 24-bit RGB color in the terminal
 vim.opt.termguicolors = true
-
+-- for avante: 
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
 
 -- Tab Settings
 -- tabs are spaces

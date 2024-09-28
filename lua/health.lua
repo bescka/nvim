@@ -33,13 +33,24 @@ local check_external_reqs = function()
   return true
 end
 
-return {
-  check = function()
-    vim.health.start 'kickstart.nvim'
+
+local success, err = pcall(check_version)
+if not success then
+    vim.health.error('Error checking version: ' .. err)
+end
+
+success, err = pcall(check_external_reqs)
+if not success then
+    vim.health.error('Error checking external requirements: ' .. err)
+end
+
+
+
+return { check = function()
+    vim.health.start 'health checker nvim'
 
     vim.health.info [[NOTE: Not every warning is a 'must-fix' in `:checkhealth`
-
-  Fix only warnings for plugins and languages you intend to use.
+    Fix only warnings for plugins and languages you intend to use.
     Mason will give warnings for languages that are not installed.
     You do not need to install, unless you want to use those languages!]]
 
@@ -48,5 +59,6 @@ return {
 
     check_version()
     check_external_reqs()
-  end,
+  end
 }
+
