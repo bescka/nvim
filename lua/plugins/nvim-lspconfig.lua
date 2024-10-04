@@ -162,6 +162,7 @@ config = function()
     html = {},
     cssls = {},
     ts_ls = {},
+    rust_analyzer = {},
     -- tsserver = {},
     -- sqls = {},
     jsonls = {},

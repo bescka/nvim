@@ -8,7 +8,9 @@ vim.api.nvim_set_keymap('n', '<leader>tpv', ':!zathura %:r.pdf &<CR>', { noremap
 vim.g.user_emmet_leader_key = '<C-e>' -- Set a leader key for emmet expansionsl
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('n', '<leader>f', '<cmd>Ex<cr>')
+
+-- netrw is currently disabled for nvim-tree
+-- vim.keymap.set('n', '<leader>f', '<cmd>Ex<cr>')
 
 
 -- Diagnostic keymaps
@@ -83,3 +85,53 @@ vim.keymap.set('n', 'md', function()
   -- Execute the delete mark command for the given mark
   vim.cmd('delm ' .. mark)
 end, { noremap = true, silent = true })
+
+-- Nvim-tree
+-- vim.keymap.set('n', '<leader>f', ':NvimTreeFindFile<CR>', { desc = 'Find current file in NvimTree' })
+vim.keymap.set('n', ';', function()
+  require('nvim-tree.api').tree.open()
+end, { noremap = true, silent = true, desc = "Open NvimTree" })
+--
+-- Ensure you have required the necessary modules
+local project_nvim = require("project_nvim")
+-- local recent_projects = project_nvim.get_recent_projects()
+
+-- -- Print the list of recent projects to inspect (useful for debugging)
+-- print(vim.inspect(recent_projects))
+
+-- Key mappings for project-specific actions
+local opts = { noremap = true, silent = true }
+
+-- Normal mode mappings
+-- vim.keymap.set('n', '<leader>spf', ':lua require("project_nvim").find_project_files()<CR>', opts)
+-- vim.keymap.set('n', '<leader>spb', ':lua require("project_nvim").browse_project_files()<CR>', opts)
+-- vim.keymap.set('n', '<leader>spd', ':lua require("project_nvim").delete_project()<CR>', opts)
+-- vim.keymap.set('n', '<leader>sps', ':lua require("project_nvim").search_in_project_files()<CR>', opts)
+-- vim.keymap.set('n', '<leader>spr', ':lua require("project_nvim").recent_project_files()<CR>', opts)
+-- vim.keymap.set('n', '<leader>spw', ':lua require("project_nvim").change_working_directory()<CR>', opts)
+vim.keymap.set('n', '<leader>spp', ':Telescope projects<CR>', opts)
+-- vim.keymap.set('n', '<leader>spf', ':Telescope find_files<CR>', { noremap = true, silent = true, desc = "Find Project Files" })
+-- vim.keymap.set('n', '<leader>spb', ':lua require("project_nvim").browse_project_files()<CR>', { noremap = true, silent = true, desc = "Browse Project Files" })
+-- vim.keymap.set('n', '<leader>spd', ':lua require("project_nvim").delete_project()<CR>', { noremap = true, silent = true, desc = "Delete Current Project" })
+-- vim.keymap.set('n', '<leader>spg', ':Telescope live_grep<CR>', { noremap = true, silent = true, desc = "Search in Project Files" })
+-- vim.keymap.set('n', '<leader>spr', ':lua require("telescope").extensions.project.project{}<CR>', { noremap = true, silent = true, desc = "List Recent Projects" })
+-- vim.keymap.set('n', '<leader>spc', ':lua require("project_nvim").change_working_directory()<CR>', { noremap = true, silent = true, desc = "Change Project Working Directory" })
+
+local function select_recent_project()
+  local recent_projects = project_nvim.get_recent_projects()
+ -- Use vim.ui.select to create a simple selection menu
+  vim.ui.select(recent_projects, { prompt = 'Select a recent project:' }, function(selected)
+    if selected then
+      -- Change to the selected project's directory
+      vim.cmd('cd ' .. selected)
+      print('Changed working directory to ' .. selected)
+    end
+  end)
+end
+
+vim.keymap.set('n', '<leader>spl', select_recent_project, { noremap = true, silent = true, desc = "List and Select Recent Projects" })
+
+-- Normal mode keymap to open the file browser
+vim.keymap.set('n', '<leader>so', ':Telescope file_browser<CR>', opts)
+
+

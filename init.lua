@@ -1,10 +1,14 @@
+require("config.vimopt")
 require("config.lazy")
 require("config.keymaps")
 require("config.autocmd")
-require("config.vimopt")
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
+
+-- config for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- vimwiki
 -- this command should only recognise .md files as vimwiki if they are in a vimwiki dir
@@ -12,7 +16,6 @@ vim.g.vimwiki_global_ext = 0
 
 vim.g.vimtex_view_general_viewer = 'SumatraPDF'
 vim.g.vimtex_view_general_viewer = "C:\\Users\\ben-c\\AppData\\Local\\SumatraPDF.exe"
-
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = false,
@@ -28,7 +31,6 @@ vim.g.mkdp_browser = 'edge'
 vim.keymap.set("n", "<leader><leader>h", "<cmd>source ~/.config/nvim/LuaSnip/html.lua<CR>")
 vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/LuaSnip/all.lua<CR>")
 vim.keymap.set("n", "<leader><leader>w", "<cmd>source ~/.config/nvim/LuaSnip/vimwiki.lua<CR>")
-
 
 -- gui colours 
 vim.opt.termguicolors = true
@@ -49,7 +51,7 @@ require('avante_lib').load()
 -- ]])
 
 require('luasnip.loaders.from_vscode').load({paths = "~/.config/nvim/LuaSnip"})
--- require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip" })
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip" })
 
 require'luasnip'.filetype_extend("typescriptreact", { "html" })
 -- Autocommand for react
@@ -65,7 +67,7 @@ require'luasnip'.filetype_extend("typescriptreact", { "html" })
 --     highlight markdownCode guibg=#282828 guifg=#dcdcdc ctermbg=235 ctermfg=145
 --     highlight markdownCodeBlock guibg=#282828 guifg=#dcdcdc ctermbg=235 ctermfg=145
 -- ]]
---
+
 -- vim.cmd([[highlight RenderMarkdownCode guibg=#A0C4FF ctermbg=lightblue]])
 -- vim.cmd([[highlight RenderMarkdownCodeInline guibg=#A0C4FF ctermbg=lightblue]])
 vim.cmd([[highlight RenderMarkdownCode guibg=#1C1C1C ctermbg=black]])

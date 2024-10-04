@@ -31,6 +31,7 @@
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
+      require('telescope').load_extension('projects')
       -- Telescope is a fuzzy finder that comes with a lot of different things that
       -- it can fuzzy find! It's more than just a "file finder", it can search
       -- many different aspects of Neovim, your workspace, LSP, and more!
@@ -98,7 +99,12 @@
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>k', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>sm', ':Telescope marks<CR>', { noremap = true, silent = true })
-      --
+      
+      --- Old project.nvim config
+      -- vim.keymap.set('n', '<leader>sp', function()
+      --   require('telescope').extensions.projects.projects{}
+      -- end, { noremap = true, silent = true, desc = '[S]earch [P]rojects' })
+    -- 
       -- -- Slightly advanced example of overriding default behavior and theme
       -- vim.keymap.set('n', '<leader>/', function()
       --   -- You can pass additional configuration to Telescope to change the theme, layout, etc.

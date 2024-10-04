@@ -4,10 +4,12 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
+  enabled = false,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
+    '3rd/image.nvim',
   },
   cmd = 'Neotree',
   keys = {
@@ -28,7 +30,11 @@ return {
       window = {
         width = 30,
       },
+      mappings = {
+        ["/"] = "noop"
+      }
     }
+    
 
     -- Function to set custom highlights
     local function set_custom_highlights()
