@@ -46,18 +46,18 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 
--- Put this in your init.lua or a Lua configuration file
-local function change_nvim_tree_dir()
-  local api = require('nvim-tree.api')
-  local cwd = vim.fn.getcwd()
-  api.tree.change_root(cwd)
-end
-
--- Auto-change nvim-tree root directory when switching tabs
-vim.api.nvim_create_autocmd('TabEnter', {
-  callback = change_nvim_tree_dir,
-})
-
+-- -- Put this in your init.lua or a Lua configuration file
+-- local function change_nvim_tree_dir()
+--   local api = require('nvim-tree.api')
+--   local cwd = vim.fn.getcwd()
+--   api.tree.change_root(cwd)
+-- end
+--
+-- -- Auto-change nvim-tree root directory when switching tabs
+-- vim.api.nvim_create_autocmd('TabEnter', {
+--   callback = change_nvim_tree_dir,
+-- })
+--
 
 -- Function to print the current session name
 vim.api.nvim_create_user_command('PrintSessionName', function()
@@ -121,3 +121,22 @@ vim.api.nvim_create_autocmd('TermOpen', {
     end,
 })
 --
+--
+-- command! Lynx call system('lynx ' . input('URL: '))
+--
+-- command! ELinks call system('elinks ' . input('URL: '))
+--
+local function run_browser(browser)
+    local url = vim.fn.input("URL: ")
+    os.execute(browser .. " " .. url)
+end
+
+-- Create a command for Lynx
+vim.api.nvim_create_user_command("Lynx", function()
+    run_browser("lynx")
+end, {})
+
+-- Create a command for ELinks
+vim.api.nvim_create_user_command("ELinks", function()
+    run_browser("elinks")
+end, {})

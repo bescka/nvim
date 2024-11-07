@@ -10,6 +10,6 @@ return {
           diffview = true  -- Integrate with diffview.nvim
         }
       })
-      vim.keymap.set('n', '<leader>g', vim.cmd.Neogit, { desc = ''})
+      vim.keymap.set('n', '<leader>g', vim.cmd.Neogit, { desc = 'neogit'})
     end
   }

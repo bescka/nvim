@@ -88,9 +88,9 @@ end, { noremap = true, silent = true })
 
 -- Nvim-tree
 -- vim.keymap.set('n', '<leader>f', ':NvimTreeFindFile<CR>', { desc = 'Find current file in NvimTree' })
-vim.keymap.set('n', ';', function()
-  require('nvim-tree.api').tree.open()
-end, { noremap = true, silent = true, desc = "Open NvimTree" })
+-- vim.keymap.set('n', ';', function()
+--   require('nvim-tree.api').tree.open()
+-- end, { noremap = true, silent = true, desc = "Open NvimTree" })
 --
 -- Ensure you have required the necessary modules
 local project_nvim = require("project_nvim")

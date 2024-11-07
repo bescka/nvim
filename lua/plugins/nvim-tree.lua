@@ -1,6 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua",
   version = "*",
+  enabled = false,
   lazy = false,
   dependencies = {
     "nvim-tree/nvim-web-devicons",
@@ -26,16 +27,34 @@ return {
       },
       view = {
         width = 30,
+      --   mappings = {
+      --   list = {
+      --     { key = "u", action = "refresh" }, -- Refresh nvim-tree to see new changes
+      --   },
+      -- },
       },
       renderer = {
         group_empty = true,
+        highlight_git = true,
+        icons = {
+          show = {
+            modified = true,  -- Ensure modified files are flagged
+          },
+          glyphs = {
+            modified = "[+]",  -- Set modified glyph to match the statusline
+          }
+        },
       },
       filters = {
         dotfiles = true,
+        custom = {'.git', 'node_modules', '.cache'},
       },
       git = {
         enable = true,
         ignore = false,
+      },
+      diagnostics = {
+        enable = true,
       }
     })
   end,

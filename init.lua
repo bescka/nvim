@@ -41,7 +41,7 @@ vim.cmd([[
 ]])
 
 -- For avante.tokenizers and templates to work, make sure to call require('avante_lib').load() somewhere when entering the editor. We will leave the users to decide where it fits to do this, as this varies among configurations. (But we do recommend running this after where you set your colorscheme)
-require('avante_lib').load()
+-- require('avante_lib').load()
 
 -- LUASNIP/ completion
 -- Ensure Neovim recognizes .tsx and .jsx files as the correct filetype
