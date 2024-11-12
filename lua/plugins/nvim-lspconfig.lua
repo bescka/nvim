@@ -177,7 +177,11 @@ config = function()
     --
     -- But for many setups, the LSP (`tsserver`) will work just fine
     -- tsserver = {},
-    --
+      -- Add Tailwind CSS Language Server
+    tailwindcss = {
+      filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      -- You can add specific settings if needed here
+    },
 
     lua_ls = {
       -- cmd = {...},
