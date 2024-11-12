@@ -24,8 +24,11 @@ local function generate_toc()
     end
   end
 
-  -- Insert the generated ToC at the top of the file
-  vim.api.nvim_buf_set_lines(file, 0, 0, false, toc)
+  -- Get the current cursor position
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+
+  -- Insert the generated ToC at the cursor position
+  vim.api.nvim_buf_set_lines(file, row - 1, row - 1, false, toc)
 end
 
 -- Create a custom command to generate the ToC
