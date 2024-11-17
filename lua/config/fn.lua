@@ -10,17 +10,24 @@ local function generate_toc()
   local file = vim.api.nvim_get_current_buf()
   local lines = vim.api.nvim_buf_get_lines(file, 0, -1, false)
 
-  -- Initialize the ToC header
+  -- Initialize the ToC header and a flag to track the first top-level heading
   local toc = { "## Table of Contents" }
+  local first_top_level_heading_found = false
 
   -- Loop through each line to find headers
   for _, line in ipairs(lines) do
-    local header = line:match("^(#+)%s+(.*)")
+    local header, title = line:match("^(#+)%s+(.*)")
     if header then
       local level = #header
-      local title = line:match("^#+%s+(.*)")
-      local link = title:gsub(" ", "-"):gsub("[^%w%-]", ""):lower()
-      table.insert(toc, string.rep("  ", level - 1) .. "- [" .. title .. "](#" .. link .. ")")
+
+      -- Check if it's the first top-level header and skip it
+      if level == 1 and not first_top_level_heading_found then
+        first_top_level_heading_found = true
+      else
+        -- Create the ToC entry and add it to the list
+        local link = title:gsub(" ", "-"):gsub("[^%w%-]", ""):lower()
+        table.insert(toc, string.rep("  ", level - 1) .. "- [" .. title .. "](#" .. link .. ")")
+      end
     end
   end
 
