@@ -9,6 +9,9 @@ vim.opt.termguicolors = true
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
+-- dont follow editorconfig files
+-- vim.g.editorconfig = false
+
 -- Tab Settings
 -- tabs are spaces
 vim.opt.expandtab = true
@@ -16,6 +19,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 -- number of spaces a tab counts for
 vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 -- copy indent from current line when starting a new line
 -- vim.opt.autoindent = true
 -- do smart auto indenting when starting a new line
@@ -65,7 +69,8 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
+
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
