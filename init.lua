@@ -4,6 +4,22 @@ require("config.keymaps")
 require("config.autocmd")
 require("config.fn")
 
+
+-- Disable swap files
+vim.opt.swapfile = false
+
+-- Enable automatic file reload on external changes
+vim.opt.autoread = true
+
+-- Auto-check for file changes when focus is gained or buffers are entered
+vim.api.nvim_create_autocmd({"FocusGained", "BufEnter"}, {
+    callback = function()
+        vim.cmd("checktime")  -- Check for external changes to the file
+    end,
+})
+
+
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 

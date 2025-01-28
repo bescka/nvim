@@ -1,5 +1,8 @@
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+
+
 
 
 vim.api.nvim_set_keymap('n', '<leader>tpc', ':!typst compile %<CR>', { noremap = true, silent = true })

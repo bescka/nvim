@@ -9,6 +9,10 @@ return { -- Collection of various small independent plugins/modules
     --  - yinq - [Y]ank [I]nside [N]ext [']quote
     --  - ci'  - [C]hange [I]nside [']quote
     require('mini.ai').setup { n_lines = 500 }
+    require('mini.icons').setup({})
+    -- require('mini.files').setup({
+    --   use_as_default_explorer = false,
+    -- })
 
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     --
@@ -53,7 +57,7 @@ return { -- Collection of various small independent plugins/modules
 
       -- Whether to disable showing non-error feedback
       silent = false,
-    } 
+    }
   )
   -- Simple and easy statusline.
     --  You could remove this setup call if you don't like it,
