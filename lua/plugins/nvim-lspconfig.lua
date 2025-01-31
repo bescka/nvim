@@ -157,6 +157,7 @@ config = function()
   local servers = {
     -- clangd = {},
     -- gopls = {},
+    clangd = {},
     pyright = {},
     vls = {},
     html = {},
