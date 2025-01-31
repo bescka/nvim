@@ -3,7 +3,7 @@ require("config.lazy")
 require("config.keymaps")
 require("config.autocmd")
 require("config.fn")
-
+require("config.debug")
 
 -- Disable swap files
 vim.opt.swapfile = false
@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd({"FocusGained", "BufEnter"}, {
 })
 
 
+vim.opt.mousescroll = { "ver:2", "hor:2" }
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
