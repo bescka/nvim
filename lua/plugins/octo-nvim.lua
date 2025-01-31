@@ -1,0 +1,180 @@
+-- return {
+--   'pwntester/octo.nvim',
+--   requires = {
+--     'nvim-lua/plenary.nvim',
+--     'nvim-telescope/telescope.nvim',
+--     -- OR 'ibhagwan/fzf-lua',
+--     'nvim-tree/nvim-web-devicons',
+--   },
+--   config = function ()
+--     require"octo".setup({
+--       default_to_projects_v2 = true
+--     })
+--   end
+-- }
+--
+return {
+  'pwntester/octo.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+    -- OR 'ibhagwan/fzf-lua',
+    'nvim-tree/nvim-web-devicons',
+  },
+  config = function ()
+    -- Load Octo.nvim with configuration
+    require"octo".setup({
+      default_to_projects_v2 = true
+    })
+
+--     -- Set up keymaps
+--   local wk = require("which-key") -- Optional: If using 'folke/which-key.nvim'
+--   local map = vim.api.nvim_set_keymap
+--   local opts = { noremap = true, silent = true }
+--
+--   -- Base Octo command prefix
+--   local function octo(cmd)
+--     return "<cmd>Octo " .. cmd .. "<CR>"
+--   end
+--
+-- -- Keymaps
+--   wk.register({
+--     o = {
+--       name = "Octo.nvim", -- Group name
+--
+--       -- Issues
+--       i = {
+--         name = "Issue",
+--         c = { octo("issue close"), "Close Issue" },
+--         r = { octo("issue reopen"), "Reopen Issue" },
+--         e = { octo("issue edit "), "Edit Issue (Enter Number)" }, -- Requires input
+--         l = { octo("issue list"), "List Issues" },
+--         s = { octo("issue search"), "Search Issues" },
+--         d = { octo("issue develop"), "Develop Issue (Create Branch)" },
+--         b = { octo("issue browser"), "Open Issue in Browser" },
+--         u = { octo("issue url"), "Copy Issue URL" },
+--       },
+--
+--       -- Pull Requests
+--       p = {
+--         name = "Pull Request",
+--         c = { octo("pr close"), "Close PR" },
+--         r = { octo("pr reopen"), "Reopen PR" },
+--         e = { octo("pr edit "), "Edit PR (Enter Number)" },
+--         l = { octo("pr list"), "List PRs" },
+--         s = { octo("pr search"), "Search PRs" },
+--         x = { octo("pr checkout"), "Checkout PR" },
+--         m = { octo("pr merge commit"), "Merge PR (Commit)" },
+--         M = { octo("pr merge rebase"), "Merge PR (Rebase)" },
+--         S = { octo("pr merge squash"), "Merge PR (Squash)" },
+--         R = { octo("pr ready"), "Mark PR Ready" },
+--         D = { octo("pr draft"), "Mark PR as Draft" },
+--         C = { octo("pr commits"), "List PR Commits" },
+--         h = { octo("pr changes"), "Show PR Changes" },
+--         d = { octo("pr diff"), "Show PR Diff" },
+--         b = { octo("pr browser"), "Open PR in Browser" },
+--         u = { octo("pr url"), "Copy PR URL" },
+--       },
+--
+--       -- Repos
+--       r = {
+--         name = "Repo",
+--         l = { octo("repo list"), "List Repos" },
+--         f = { octo("repo fork"), "Fork Repo" },
+--         b = { octo("repo browser"), "Open Repo in Browser" },
+--         u = { octo("repo url"), "Copy Repo URL" },
+--         v = { octo("repo view "), "View Repo (Specify Org/Name)" },
+--       },
+--
+--       -- Gists
+--       g = {
+--         name = "Gist",
+--         l = { octo("gist list"), "List Gists" },
+--       },
+--
+--       -- Comments
+--       c = {
+--         name = "Comment",
+--         a = { octo("comment add"), "Add Comment" },
+--         d = { octo("comment delete"), "Delete Comment" },
+--       },
+--
+--       -- Threads
+--       t = {
+--         name = "Thread",
+--         r = { octo("thread resolve"), "Resolve Thread" },
+--         u = { octo("thread unresolve"), "Unresolve Thread" },
+--       },
+--
+--       -- Labels
+--       l = {
+--         name = "Label",
+--         a = { octo("label add"), "Add Label" },
+--         r = { octo("label remove"), "Remove Label" },
+--         c = { octo("label create"), "Create Label" },
+--       },
+--
+--       -- Milestones
+--       m = {
+--         name = "Milestone",
+--         a = { octo("milestone add"), "Add Milestone" },
+--         r = { octo("milestone remove"), "Remove Milestone" },
+--         c = { octo("milestone create"), "Create Milestone" },
+--         l = { octo("milestone list"), "List Milestones" },
+--       },
+--
+--       -- Assignees
+--       a = {
+--         name = "Assignee",
+--         a = { octo("assignee add"), "Add Assignee" },
+--         r = { octo("assignee remove"), "Remove Assignee" },
+--       },
+--
+--       -- Reviewers
+--       v = {
+--         name = "Reviewer",
+--         a = { octo("reviewer add"), "Add Reviewer" },
+--       },
+--
+--       -- Reactions
+--       R = {
+--         name = "Reactions",
+--         ["+"] = { octo("reaction thumbs_up"), "👍 Add 👍" },
+--         ["-"] = { octo("reaction thumbs_down"), "👎 Add 👎" },
+--         e = { octo("reaction eyes"), "👀 Add 👀" },
+--         l = { octo("reaction laugh"), "😄 Add 😄" },
+--         c = { octo("reaction confused"), "😕 Add 😕" },
+--         r = { octo("reaction rocket"), "🚀 Add 🚀" },
+--         h = { octo("reaction heart"), "❤️ Add ❤️" },
+--         p = { octo("reaction hooray"), "🎉 Add 🎉" },
+--       },
+--
+--       -- Cards (Project Assignments)
+--       C = {
+--         name = "Card",
+--         a = { octo("card add"), "Add Issue/PR to Project" },
+--         r = { octo("card remove"), "Remove from Project" },
+--         m = { octo("card move"), "Move Project Card" },
+--       },
+--
+--       -- Reviews
+--       V = {
+--         name = "Review",
+--         s = { octo("review start"), "Start Review" },
+--         S = { octo("review submit"), "Submit Review" },
+--         r = { octo("review resume"), "Resume Review" },
+--         d = { octo("review discard"), "Discard Review" },
+--         c = { octo("review comments"), "View Review Comments" },
+--         x = { octo("review close"), "Close Review Window" },
+--       },
+--
+--       -- Actions
+--       A = { octo("actions"), "List Available Octo Actions" },
+--
+--       -- Notifications
+--       n = { octo("notification list"), "List Notifications" },
+--     },
+--   }, { prefix = "<leader>" }) -- Set prefix to `<leader>o`
+  end
+}
+
