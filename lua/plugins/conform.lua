@@ -36,6 +36,7 @@ return { -- Autoformat
         javascriptreact = { 'prettier' },
         typescriptreact = { 'prettier' },
         rust = { 'rustfmt' },
+        bash = { 'shfmt' }
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

@@ -157,6 +157,7 @@ config = function()
   local servers = {
     -- clangd = {},
     -- gopls = {},
+    bashls = {},
     clangd = {},
     pyright = {},
     vls = {},
@@ -170,6 +171,7 @@ config = function()
     yamlls = {},
     marksman = {},
     dockerls = {},
+    
     -- rust_analyzer = {},
     -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
     --
@@ -218,6 +220,7 @@ config = function()
     'black',
     'prettier',
     'eslint_d',
+    'shfmt',
   })
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

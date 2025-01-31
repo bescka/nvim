@@ -12,6 +12,8 @@ return {
         typescript = { 'eslint_d' },
         javascriptReact = { 'eslint_d' },
         typescriptReact = { 'eslint_d' },
+        sh = { 'shellcheck' },
+        bash = { 'shellcheck' },
       }
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
