@@ -1,180 +1,98 @@
--- return {
---   'pwntester/octo.nvim',
---   requires = {
---     'nvim-lua/plenary.nvim',
---     'nvim-telescope/telescope.nvim',
---     -- OR 'ibhagwan/fzf-lua',
---     'nvim-tree/nvim-web-devicons',
---   },
---   config = function ()
---     require"octo".setup({
---       default_to_projects_v2 = true
---     })
---   end
--- }
---
 return {
   'pwntester/octo.nvim',
   requires = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',
-    -- OR 'ibhagwan/fzf-lua',
     'nvim-tree/nvim-web-devicons',
+    'folke/which-key.nvim',
   },
-  config = function ()
-    -- Load Octo.nvim with configuration
+  config = function()
     require"octo".setup({
       default_to_projects_v2 = true
     })
 
---     -- Set up keymaps
---   local wk = require("which-key") -- Optional: If using 'folke/which-key.nvim'
---   local map = vim.api.nvim_set_keymap
---   local opts = { noremap = true, silent = true }
---
---   -- Base Octo command prefix
---   local function octo(cmd)
---     return "<cmd>Octo " .. cmd .. "<CR>"
---   end
---
--- -- Keymaps
---   wk.register({
---     o = {
---       name = "Octo.nvim", -- Group name
---
---       -- Issues
---       i = {
---         name = "Issue",
---         c = { octo("issue close"), "Close Issue" },
---         r = { octo("issue reopen"), "Reopen Issue" },
---         e = { octo("issue edit "), "Edit Issue (Enter Number)" }, -- Requires input
---         l = { octo("issue list"), "List Issues" },
---         s = { octo("issue search"), "Search Issues" },
---         d = { octo("issue develop"), "Develop Issue (Create Branch)" },
---         b = { octo("issue browser"), "Open Issue in Browser" },
---         u = { octo("issue url"), "Copy Issue URL" },
---       },
---
---       -- Pull Requests
---       p = {
---         name = "Pull Request",
---         c = { octo("pr close"), "Close PR" },
---         r = { octo("pr reopen"), "Reopen PR" },
---         e = { octo("pr edit "), "Edit PR (Enter Number)" },
---         l = { octo("pr list"), "List PRs" },
---         s = { octo("pr search"), "Search PRs" },
---         x = { octo("pr checkout"), "Checkout PR" },
---         m = { octo("pr merge commit"), "Merge PR (Commit)" },
---         M = { octo("pr merge rebase"), "Merge PR (Rebase)" },
---         S = { octo("pr merge squash"), "Merge PR (Squash)" },
---         R = { octo("pr ready"), "Mark PR Ready" },
---         D = { octo("pr draft"), "Mark PR as Draft" },
---         C = { octo("pr commits"), "List PR Commits" },
---         h = { octo("pr changes"), "Show PR Changes" },
---         d = { octo("pr diff"), "Show PR Diff" },
---         b = { octo("pr browser"), "Open PR in Browser" },
---         u = { octo("pr url"), "Copy PR URL" },
---       },
---
---       -- Repos
---       r = {
---         name = "Repo",
---         l = { octo("repo list"), "List Repos" },
---         f = { octo("repo fork"), "Fork Repo" },
---         b = { octo("repo browser"), "Open Repo in Browser" },
---         u = { octo("repo url"), "Copy Repo URL" },
---         v = { octo("repo view "), "View Repo (Specify Org/Name)" },
---       },
---
---       -- Gists
---       g = {
---         name = "Gist",
---         l = { octo("gist list"), "List Gists" },
---       },
---
---       -- Comments
---       c = {
---         name = "Comment",
---         a = { octo("comment add"), "Add Comment" },
---         d = { octo("comment delete"), "Delete Comment" },
---       },
---
---       -- Threads
---       t = {
---         name = "Thread",
---         r = { octo("thread resolve"), "Resolve Thread" },
---         u = { octo("thread unresolve"), "Unresolve Thread" },
---       },
---
---       -- Labels
---       l = {
---         name = "Label",
---         a = { octo("label add"), "Add Label" },
---         r = { octo("label remove"), "Remove Label" },
---         c = { octo("label create"), "Create Label" },
---       },
---
---       -- Milestones
---       m = {
---         name = "Milestone",
---         a = { octo("milestone add"), "Add Milestone" },
---         r = { octo("milestone remove"), "Remove Milestone" },
---         c = { octo("milestone create"), "Create Milestone" },
---         l = { octo("milestone list"), "List Milestones" },
---       },
---
---       -- Assignees
---       a = {
---         name = "Assignee",
---         a = { octo("assignee add"), "Add Assignee" },
---         r = { octo("assignee remove"), "Remove Assignee" },
---       },
---
---       -- Reviewers
---       v = {
---         name = "Reviewer",
---         a = { octo("reviewer add"), "Add Reviewer" },
---       },
---
---       -- Reactions
---       R = {
---         name = "Reactions",
---         ["+"] = { octo("reaction thumbs_up"), "👍 Add 👍" },
---         ["-"] = { octo("reaction thumbs_down"), "👎 Add 👎" },
---         e = { octo("reaction eyes"), "👀 Add 👀" },
---         l = { octo("reaction laugh"), "😄 Add 😄" },
---         c = { octo("reaction confused"), "😕 Add 😕" },
---         r = { octo("reaction rocket"), "🚀 Add 🚀" },
---         h = { octo("reaction heart"), "❤️ Add ❤️" },
---         p = { octo("reaction hooray"), "🎉 Add 🎉" },
---       },
---
---       -- Cards (Project Assignments)
---       C = {
---         name = "Card",
---         a = { octo("card add"), "Add Issue/PR to Project" },
---         r = { octo("card remove"), "Remove from Project" },
---         m = { octo("card move"), "Move Project Card" },
---       },
---
---       -- Reviews
---       V = {
---         name = "Review",
---         s = { octo("review start"), "Start Review" },
---         S = { octo("review submit"), "Submit Review" },
---         r = { octo("review resume"), "Resume Review" },
---         d = { octo("review discard"), "Discard Review" },
---         c = { octo("review comments"), "View Review Comments" },
---         x = { octo("review close"), "Close Review Window" },
---       },
---
---       -- Actions
---       A = { octo("actions"), "List Available Octo Actions" },
---
---       -- Notifications
---       n = { octo("notification list"), "List Notifications" },
---     },
---   }, { prefix = "<leader>" }) -- Set prefix to `<leader>o`
+    local wk = require("which-key")
+
+    wk.add({
+      { "<leader>o", group = "[O]cto.nvim" },
+      { "<leader>oi", group = "[I]ssue" },
+      { "<leader>op", group = "[P]ull Request" },
+      { "<leader>or", group = "[R]epo" },
+      { "<leader>og", group = "[G]ist" },
+      { "<leader>oc", group = "[C]omment" },
+      { "<leader>oV", group = "[V]iew Review" },
+      { "<leader>on", group = "[N]otifications" },
+    })
+
+    wk.add({
+      { "<leader>oic", "<cmd>Octo issue close<CR>", desc = "Close Issue" },
+      { "<leader>oir", "<cmd>Octo issue reopen<CR>", desc = "Reopen Issue" },
+      { "<leader>oie", function()
+          vim.ui.input({ prompt = "Enter Issue Number: " }, function(issue_number)
+              if issue_number then
+                  vim.cmd("Octo issue edit " .. issue_number)
+              end
+          end)
+        end, desc = "Edit Issue" },
+      { "<leader>oil", "<cmd>Octo issue list<CR>", desc = "List Issues" },
+      { "<leader>ois", function()
+          vim.ui.input({ prompt = "Enter Search Query: " }, function(query)
+              if query then
+                  vim.cmd("Octo issue search " .. query)
+              end
+          end)
+        end, desc = "Search Issues" },
+      { "<leader>oid", "<cmd>Octo issue develop<CR>", desc = "Develop Issue" },
+      { "<leader>oib", "<cmd>Octo issue browser<CR>", desc = "Open Issue in Browser" },
+      { "<leader>oiu", "<cmd>Octo issue url<CR>", desc = "Copy Issue URL" },
+    })
+
+    wk.add({
+      { "<leader>opc", "<cmd>Octo pr close<CR>", desc = "Close PR" },
+      { "<leader>opr", "<cmd>Octo pr reopen<CR>", desc = "Reopen PR" },
+      { "<leader>ope", function()
+          vim.ui.input({ prompt = "Enter PR Number: " }, function(pr_number)
+              if pr_number then
+                  vim.cmd("Octo pr edit " .. pr_number)
+              end
+          end)
+        end, desc = "Edit PR" },
+      { "<leader>opl", "<cmd>Octo pr list<CR>", desc = "List PRs" },
+      { "<leader>ops", function()
+          vim.ui.input({ prompt = "Enter Search Query: " }, function(query)
+              if query then
+                  vim.cmd("Octo pr search " .. query)
+              end
+          end)
+        end, desc = "Search PRs" },
+      { "<leader>opx", function()
+          vim.ui.input({ prompt = "Enter PR Number: " }, function(pr_number)
+              if pr_number then
+                  vim.cmd("Octo pr checkout " .. pr_number)
+              end
+          end)
+        end, desc = "Checkout PR" },
+      { "<leader>opm", "<cmd>Octo pr merge commit<CR>", desc = "Merge PR (Commit)" },
+      { "<leader>opM", "<cmd>Octo pr merge rebase<CR>", desc = "Merge PR (Rebase)" },
+      { "<leader>opS", "<cmd>Octo pr merge squash<CR>", desc = "Merge PR (Squash)" },
+      { "<leader>opb", "<cmd>Octo pr browser<CR>", desc = "Open PR in Browser" },
+      { "<leader>opu", "<cmd>Octo pr url<CR>", desc = "Copy PR URL" },
+    })
+
+    wk.add({
+      { "<leader>orc", "<cmd>Octo repo create<CR>", desc = "Create Repo" },
+      { "<leader>orv", "<cmd>Octo repo view<CR>", desc = "View Repo" },
+      { "<leader>ogc", "<cmd>Octo gist create<CR>", desc = "Create Gist" },
+      { "<leader>ogb", "<cmd>Octo gist browser<CR>", desc = "Open Gist in Browser" },
+      { "<leader>oCa", "<cmd>Octo comment add<CR>", desc = "Add Comment" },
+      { "<leader>oCd", "<cmd>Octo comment delete<CR>", desc = "Delete Comment" },
+      { "<leader>oVs", "<cmd>Octo review start<CR>", desc = "Start Review" },
+      { "<leader>oVS", "<cmd>Octo review submit<CR>", desc = "Submit Review" },
+      { "<leader>oVR", "<cmd>Octo review resume<CR>", desc = "Resume Review" },
+      { "<leader>oVd", "<cmd>Octo review discard<CR>", desc = "Discard Review" },
+      { "<leader>oVx", "<cmd>Octo review close<CR>", desc = "Close Review Window" },
+      { "<leader>onl", "<cmd>Octo notification list<CR>", desc = "List Notifications" },
+    })
   end
 }
 
