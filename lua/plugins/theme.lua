@@ -2,21 +2,34 @@
   --   -- Change the name of the colorscheme plugin below, and then
   --   -- change the command in the config to whatever the name of that colorscheme is.
   --   --
-  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --   -- If you want to see what colorschemes are already installed, you can use :Telescope colorscheme.
+-- return {
+--     'folke/tokyonight.nvim',
+--     enabled = true,
+--     priority = 1000, -- Make sure to load this before all the other start plugins.
+--     init = function()
+--       -- Load the colorscheme here.
+--       -- Like many other themes, this one has different styles, and you could load
+--       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+--       vim.cmd.colorscheme 'tokyonight-night'
+--
+--       -- You can configure highlights by doing something like:
+      -- vim.cmd.hi 'Comment gui=none'
+
 return {
+  -- Tokyonight color scheme
+  {
     'folke/tokyonight.nvim',
     enabled = true,
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+    priority = 1000,  -- Ensure it's loaded before other plugins
     init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      -- Set Tokyonight color scheme
       vim.cmd.colorscheme 'tokyonight-night'
-
-      -- You can configure highlights by doing something like:
+      
+      -- Customize highlights for this theme
       vim.cmd.hi 'Comment gui=none'
 
-      -- Set terminal colors for ToggleTerm
+      -- Set terminal colors
       vim.g.terminal_color_0 = "#1a1b26"
       vim.g.terminal_color_1 = "#f7768e"
       vim.g.terminal_color_2 = "#9ece6a"
@@ -34,53 +47,70 @@ return {
       vim.g.terminal_color_14 = "#7dcfff"
       vim.g.terminal_color_15 = "#c0caf5"
     end,
-  }
--- return {
---   'sainnhe/everforest',
---   config = function()
---     -- Set options for Everforest
---     vim.g.everforest_background = 'soft'
---     vim.g.everforest_better_performance = 1
---     vim.g.everforest_enable_italic = 1
---     vim.g.everforest_transparent_background = 1
---
---     -- Apply the theme
---     vim.cmd('colorscheme everforest')
---
---     -- Apply transparency settings
---     vim.cmd('highlight Normal guibg=NONE ctermbg=NONE')
---     vim.cmd('highlight NonText guibg=NONE ctermbg=NONE')
---     vim.cmd('highlight NvimTreeNormal guibg=NONE ctermbg=NONE')
---     vim.cmd('highlight NormalNC guibg=NONE ctermbg=NONE')
---     vim.cmd('highlight EndOfBuffer guibg=NONE ctermbg=NONE')
---     -- background
---
---     vim.cmd[[
---       augroup TerminalSettings
---         autocmd!
---         autocmd TermOpen * setlocal winhighlight=Normal:TerminalBackground
---       augroup END
---     ]]
---
---     vim.api.nvim_set_hl(0, "TerminalBackground", { bg = "#1a1a1a" })  -- Replace with your desired color
---
---   end,
--- }
-  --   -- 'liuchengxu/space-vim-theme',
-  --   'EdenEast/nightfox.nvim',
-  --   config = function()
-  --     require('nightfox').setup {
-  --       options = {
-  --         transparent = true, -- We will handle transparency manually
-  --         terminal_colors = true, -- Set terminal colors
-  --       },
-  --     }
-  --     -- Apply the theme
-  --     vim.cmd 'colorscheme nordfox'
-  --     vim.cmd 'highlight NonText guibg=none ctermbg=none'
-  --     vim.cmd 'highlight NvimTreeNormal guibg=NONE ctermbg=NONE'
-  --     vim.cmd 'highlight Normal guibg=NONE ctermbg=NONE'
-  --     vim.cmd 'highlight NormalNC guibg=NONE ctermbg=NONE'
-  --     vim.cmd 'highlight EndOfBuffer guibg=NONE ctermbg=NONE'
-  --   end,
-  -- }
+  },
+  {
+    "Zeioth/neon.nvim",
+    opts = {
+      dim_inactive = false,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+      },
+    }
+  },
+
+  -- Everforest color scheme
+  {
+    'sainnhe/everforest',
+    config = function()
+      -- Set options for Everforest theme
+      vim.g.everforest_background = 'soft'
+      vim.g.everforest_better_performance = 1
+      vim.g.everforest_enable_italic = 1
+      vim.g.everforest_transparent_background = 1
+
+      -- Apply the theme
+      vim.cmd('colorscheme everforest')
+
+      -- Apply transparency settings
+      vim.cmd('highlight Normal guibg=NONE ctermbg=NONE')
+      vim.cmd('highlight NonText guibg=NONE ctermbg=NONE')
+      vim.cmd('highlight NvimTreeNormal guibg=NONE ctermbg=NONE')
+      vim.cmd('highlight NormalNC guibg=NONE ctermbg=NONE')
+      vim.cmd('highlight EndOfBuffer guibg=NONE ctermbg=NONE')
+
+      -- Terminal settings for Everforest
+      vim.cmd([[
+        augroup TerminalSettings
+          autocmd!
+          autocmd TermOpen * setlocal winhighlight=Normal:TerminalBackground
+        augroup END
+      ]])
+      vim.api.nvim_set_hl(0, "TerminalBackground", { bg = "#1a1a1a" })
+    end,
+  },
+
+  -- Nightfox color scheme
+  {
+    'EdenEast/nightfox.nvim',
+    config = function()
+      require('nightfox').setup {
+        options = {
+          transparent = true,  -- Handle transparency manually
+          terminal_colors = true,  -- Set terminal colors
+        },
+      }
+
+      -- Apply the theme
+      vim.cmd 'colorscheme nordfox'
+
+      -- Apply transparency settings
+      vim.cmd 'highlight NonText guibg=none ctermbg=none'
+      vim.cmd 'highlight NvimTreeNormal guibg=NONE ctermbg=NONE'
+      vim.cmd 'highlight Normal guibg=NONE ctermbg=NONE'
+      vim.cmd 'highlight NormalNC guibg=NONE ctermbg=NONE'
+      vim.cmd 'highlight EndOfBuffer guibg=NONE ctermbg=NONE'
+    end,
+  },
+}
+
