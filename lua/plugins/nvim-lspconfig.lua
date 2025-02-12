@@ -165,7 +165,7 @@ config = function()
     cssls = {},
     ts_ls = {},
     rust_analyzer = {},
-    -- tsserver = {},
+
     -- sqls = {},
     jsonls = {},
     yamlls = {},
@@ -186,6 +186,10 @@ config = function()
       -- You can add specific settings if needed here
     },
 
+    -- cypress_ls = {
+    --     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    --   },
+    --
     lua_ls = {
       -- cmd = {...},
       -- filetypes = { ...},

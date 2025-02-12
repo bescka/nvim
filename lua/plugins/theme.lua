@@ -24,7 +24,7 @@ return {
     priority = 1000,  -- Ensure it's loaded before other plugins
     init = function()
       -- Set Tokyonight color scheme
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight-night'
       
       -- Customize highlights for this theme
       vim.cmd.hi 'Comment gui=none'
@@ -58,41 +58,19 @@ return {
       },
     }
   },
-
-  -- Everforest color scheme
+  -- Cyberdream
   {
-    'sainnhe/everforest',
-    config = function()
-      -- Set options for Everforest theme
-      vim.g.everforest_background = 'soft'
-      vim.g.everforest_better_performance = 1
-      vim.g.everforest_enable_italic = 1
-      vim.g.everforest_transparent_background = 1
-
-      -- Apply the theme
-      vim.cmd('colorscheme everforest')
-
-      -- Apply transparency settings
-      vim.cmd('highlight Normal guibg=NONE ctermbg=NONE')
-      vim.cmd('highlight NonText guibg=NONE ctermbg=NONE')
-      vim.cmd('highlight NvimTreeNormal guibg=NONE ctermbg=NONE')
-      vim.cmd('highlight NormalNC guibg=NONE ctermbg=NONE')
-      vim.cmd('highlight EndOfBuffer guibg=NONE ctermbg=NONE')
-
-      -- Terminal settings for Everforest
-      vim.cmd([[
-        augroup TerminalSettings
-          autocmd!
-          autocmd TermOpen * setlocal winhighlight=Normal:TerminalBackground
-        augroup END
-      ]])
-      vim.api.nvim_set_hl(0, "TerminalBackground", { bg = "#1a1a1a" })
-    end,
+      "scottmckendry/cyberdream.nvim",
+      lazy = false,
+      --Apply the theme
+      -- vim.cmd 'colorscheme cyberdream'
+      -- priority = 1000,
   },
 
   -- Nightfox color scheme
   {
     'EdenEast/nightfox.nvim',
+
     config = function()
       require('nightfox').setup {
         options = {
@@ -102,7 +80,7 @@ return {
       }
 
       -- Apply the theme
-      vim.cmd 'colorscheme nordfox'
+      -- vim.cmd 'colorscheme nordfox'
 
       -- Apply transparency settings
       vim.cmd 'highlight NonText guibg=none ctermbg=none'

@@ -93,34 +93,34 @@ end
 vim.keymap.set('n', '<C-\\>', ':lua open_project_terminal()<CR>', { noremap = true, silent = true })
 
 
--- Function to set terminal colors
-local function set_terminal_colors()
-    vim.g.terminal_color_0 = "#414868"   -- black
-    vim.g.terminal_color_1 = "#F7768E"   -- red
-    vim.g.terminal_color_2 = "#73DACA"   -- green
-    vim.g.terminal_color_3 = "#E0AF68"   -- yellow
-    vim.g.terminal_color_4 = "#7AA2F7"   -- blue
-    vim.g.terminal_color_5 = "#BB9AF7"   -- purple
-    vim.g.terminal_color_6 = "#73DACA"   -- cyan
-    vim.g.terminal_color_7 = "#C0CAF5"   -- white
-    vim.g.terminal_color_8 = "#414868"   -- bright black
-    vim.g.terminal_color_9 = "#F7768E"   -- bright red
-    vim.g.terminal_color_10 = "#73DACA"  -- bright green
-    vim.g.terminal_color_11 = "#E0AF68"  -- bright yellow
-    vim.g.terminal_color_12 = "#7AA2F7"  -- bright blue
-    vim.g.terminal_color_13 = "#BB9AF7"  -- bright purple
-    vim.g.terminal_color_14 = "#73DACA"  -- bright cyan
-    vim.g.terminal_color_15 = "#C0CAF5"  -- bright white
-end
-
--- Apply terminal colors on TermOpen
-vim.api.nvim_create_autocmd('TermOpen', {
-    pattern = 'term://*',
-    callback = function()
-        set_terminal_colors()
-    end,
-})
+-- -- Function to set terminal colors
+-- local function set_terminal_colors()
+--     vim.g.terminal_color_0 = "#414868"   -- black
+--     vim.g.terminal_color_1 = "#F7768E"   -- red
+--     vim.g.terminal_color_2 = "#73DACA"   -- green
+--     vim.g.terminal_color_3 = "#E0AF68"   -- yellow
+--     vim.g.terminal_color_4 = "#7AA2F7"   -- blue
+--     vim.g.terminal_color_5 = "#BB9AF7"   -- purple
+--     vim.g.terminal_color_6 = "#73DACA"   -- cyan
+--     vim.g.terminal_color_7 = "#C0CAF5"   -- white
+--     vim.g.terminal_color_8 = "#414868"   -- bright black
+--     vim.g.terminal_color_9 = "#F7768E"   -- bright red
+--     vim.g.terminal_color_10 = "#73DACA"  -- bright green
+--     vim.g.terminal_color_11 = "#E0AF68"  -- bright yellow
+--     vim.g.terminal_color_12 = "#7AA2F7"  -- bright blue
+--     vim.g.terminal_color_13 = "#BB9AF7"  -- bright purple
+--     vim.g.terminal_color_14 = "#73DACA"  -- bright cyan
+--     vim.g.terminal_color_15 = "#C0CAF5"  -- bright white
+-- end
 --
+-- -- Apply terminal colors on TermOpen
+-- vim.api.nvim_create_autocmd('TermOpen', {
+--     pattern = 'term://*',
+--     callback = function()
+--         set_terminal_colors()
+--     end,
+-- })
+-- --
 --
 -- command! Lynx call system('lynx ' . input('URL: '))
 --

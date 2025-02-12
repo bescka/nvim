@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd({"FocusGained", "BufEnter"}, {
     end,
 })
 
+vim.cmd 'colorscheme carbonfox'
 
 vim.opt.mousescroll = { "ver:4", "hor:2" }
 
