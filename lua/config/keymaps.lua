@@ -1,5 +1,6 @@
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+vim.keymap.set("n", "<leader>at", "<Cmd>AvanteChat<CR>", {desc = "[A]vante [T]alk (Chat)"})
 
 vim.api.nvim_set_keymap("n", "<leader>tpc", ":!typst compile %<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tpv", ":!zathura %:r.pdf &<CR>", { noremap = true, silent = true })
@@ -10,9 +11,11 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- netrw is currently disabled for nvim-tree
 -- vim.keymap.set('n', '<leader>f', '<cmd>Ex<cr>')
 
+vim.keymap.set("n", "<leader>z", "<Cmd>ZenMode<CR>", {desc = "Toggle [Z]enMode"})
 
-
-
+-- backspace and ctrl 
+vim.api.nvim_set_keymap("n", "<C-BS>", "i<C-BS>", { noremap = true, silent = true })
+--
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
@@ -32,6 +35,9 @@ function _G.set_terminal_keymaps()
 	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
 	vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
 end
+
+
+vim.keymap.set("n", "<leader>w]", "<Cmd>vertical wincmd ]<CR>", { noremap = true, silent = true })
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")

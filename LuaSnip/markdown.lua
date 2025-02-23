@@ -11,6 +11,12 @@ ls.add_snippets("markdown", {
     t({"", "```"}),
     i(0),
     }),
+    s("typescript-display",{
+    t({"```ts", ""}),
+    i(1),
+    t({"", "```"}),
+    i(0),
+    }),
     s("css-display",{
     t({"```css", ""}),
     i(1),

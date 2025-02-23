@@ -8,6 +8,9 @@ require("config.debug")
 -- Disable swap files
 vim.opt.swapfile = false
 
+-- confirm quit with unsaved changes
+vim.opt.confirm = true
+
 -- Enable automatic file reload on external changes
 vim.opt.autoread = true
 
@@ -68,9 +71,10 @@ vim.cmd([[
 --   autocmd BufRead,BufNewFile *.tsx set filetype=typescriptreact
 --   autocmd BufRead,BufNewFile *.jsx set filetype=javascriptreact
 -- ]])
+local snippet_path = vim.fn.stdpath("config") .. "LuaSnip"
 
-require('luasnip.loaders.from_vscode').load({paths = "~/.config/nvim/LuaSnip"})
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip" })
+require('luasnip.loaders.from_vscode').load({paths = snippet_path})
+require("luasnip.loaders.from_lua").load({paths = snippet_path })
 
 require'luasnip'.filetype_extend("typescriptreact", { "html" })
 -- Autocommand for react

@@ -12,7 +12,7 @@ return {
       model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
       timeout = 30000, -- timeout in milliseconds
       temperature = 0, -- adjust if needed
-      max_tokens = 4096,
+      max_tokens = 16000,
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -42,7 +42,7 @@ return {
             insert_mode = true,
           },
           -- required for Windows users
-          use_absolute_path = true,
+          use_absolute_path = false,
         },
       },
     },
